@@ -34,4 +34,9 @@ public class StringCalculatorTest {
         }
         assertEquals(expected, StringCalculator.add(sb.toString()));
     }
+
+    @Test
+    public void newlinesAndCommasAreAllowed() {
+        assertEquals(6, StringCalculator.add("1\n2,3"));
+    }
 }
