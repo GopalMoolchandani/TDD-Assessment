@@ -39,4 +39,9 @@ public class StringCalculatorTest {
     public void newlinesAndCommasAreAllowed() {
         assertEquals(6, StringCalculator.add("1\n2,3"));
     }
+
+    @Test
+    public void customDelimiter() {
+        assertEquals(3, StringCalculator.add("//;\n1;2"));
+    }
 }
