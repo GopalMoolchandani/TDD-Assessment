@@ -1,5 +1,6 @@
 import org.junit.Test;
-import static org.junit.Assert.assertEquals;
+
+import static org.junit.Assert.*;
 
 public class StringCalculatorTest {
     @Test
@@ -43,5 +44,14 @@ public class StringCalculatorTest {
     @Test
     public void customDelimiter() {
         assertEquals(3, StringCalculator.add("//;\n1;2"));
+    }
+
+    @Test
+    public void negativeNumbersThrowWithAllNegativesListed() {
+        IllegalArgumentException ex = assertThrows(IllegalArgumentException.class,
+                () -> StringCalculator.add("1,-2,3,-5"));
+        assertTrue(ex.getMessage().contains("-2"));
+        assertTrue(ex.getMessage().contains("-5"));
+        assertEquals("negative numbers not allowed: -2, -5", ex.getMessage());
     }
 }
